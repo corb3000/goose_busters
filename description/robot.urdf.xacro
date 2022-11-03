@@ -1,7 +1,12 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
+    <xacro:arg name="prefix" default="" />
 
-    <!-- Example link -->
-    <link name="base_link"></link>
+    <xacro:include filename="diffbot_description.urdf.xacro" />
+
+    <!-- Import Rviz colors -->
+    <xacro:include filename="diffbot.materials.xacro" />
+
+    <xacro:diffbot prefix="$(arg prefix)" />
 
 </robot>
