@@ -2,11 +2,14 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
     <xacro:arg name="prefix" default="" />
 
-    <xacro:include filename="diffbot_description.urdf.xacro" />
+    <xacro:include filename="diffbot_description.xacro" />
+
+    <xacro:include filename="gazebo_control.xacro" />
 
     <!-- Import Rviz colors -->
     <xacro:include filename="diffbot.materials.xacro" />
+
     <!-- to make Prefixes work -->
-    <xacro:diffbot prefix="$(arg prefix)" />
+    <!-- <xacro:diffbot prefix="$(arg prefix)" /> -->
 
 </robot>
