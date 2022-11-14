@@ -6,7 +6,7 @@
 
     <!-- Import Rviz colors -->
     <xacro:include filename="diffbot.materials.xacro" />
-
+    <!-- to make Prefixes work -->
     <xacro:diffbot prefix="$(arg prefix)" />
 
 </robot>
