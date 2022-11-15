@@ -4,7 +4,8 @@
 
     <xacro:include filename="diffbot_description.xacro" />
 
-    <xacro:include filename="gazebo_control.xacro" />
+    <!-- <xacro:include filename="gazebo_control.xacro" /> -->
+    <xacro:include filename="ros2_control.xacro" />
 
     <!-- Import Rviz colors -->
     <xacro:include filename="diffbot.materials.xacro" />
