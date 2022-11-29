@@ -1,11 +1,15 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
     <xacro:arg name="prefix" default="" />
+    
 
-    <xacro:include filename="diffbot_description.xacro" />
 
     <!-- <xacro:include filename="gazebo_control.xacro" /> -->
     <xacro:include filename="ros2_control.xacro" />
+
+    <xacro:include filename="diffbot_description.xacro" />
+
+
 
     <!-- Import Rviz colors -->
     <xacro:include filename="diffbot.materials.xacro" />

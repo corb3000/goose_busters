@@ -37,7 +37,8 @@ def generate_launch_description():
                         arguments=['-topic', 'robot_description',
                                    '-entity', 'goose'],
                         output='screen')
-
+    
+    
 
     diff_drive_spawner = Node(
         package="controller_manager",
