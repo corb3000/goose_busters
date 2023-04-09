@@ -39,6 +39,11 @@ def generate_launch_description():
         ]
     )
 
+    power_service = Node(
+        package="controller_manager",
+        executable="ros2_control_node"
+
+    )
 
     controller_params_file = os.path.join(get_package_share_directory(package_name),'config','my_controllers.yaml')
  
