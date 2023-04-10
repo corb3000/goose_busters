@@ -9,6 +9,9 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import Command, FindExecutable, PathJoinSubstitution
 from launch.actions import RegisterEventHandler
 from launch.event_handlers import OnProcessStart
+from launch.event_handlers import OnProcessFinish
+from launch.actions import ExecuteProcess, LogInfo, RegisterEventHandler
+from launch.substitutions import FindExecutable, LaunchConfiguration
 
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
@@ -40,9 +43,19 @@ def generate_launch_description():
     )
 
     power_service = Node(
-        package="controller_manager",
-        executable="ros2_control_node"
+        package="power_service",
+        executable="service"
 
+    )
+
+    power_on = ExecuteProcess(
+        cmd=[[
+            FindExecutable(name="ros2"),
+            " service call ",
+            "/motor_power robot_interfaces/srv/MotorPower ",
+            '"{'on': 1}"'
+        ]],
+        shell=True
     )
 
     controller_params_file = os.path.join(get_package_share_directory(package_name),'config','my_controllers.yaml')
