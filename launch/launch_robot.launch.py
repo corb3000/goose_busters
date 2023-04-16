@@ -52,7 +52,7 @@ def generate_launch_description():
         [
                 FindExecutable(name="ros2"),
                 " service call ",
-                "/motor_power",
+                "/motor_power ",
                 "robot_interfaces/srv/MotorPower ",
                 '"{on: 1}"'
         ]
@@ -65,7 +65,7 @@ def generate_launch_description():
         [
                 FindExecutable(name="ros2"),
                 " service call ",
-                "/motor_button",
+                "/motor_button ",
                 "robot_interfaces/srv/MotorButtonOn ",
         ]
         ],
