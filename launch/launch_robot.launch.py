@@ -8,7 +8,7 @@ from launch.actions import IncludeLaunchDescription, TimerAction
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import Command, FindExecutable, PathJoinSubstitution
 from launch.actions import RegisterEventHandler
-from launch.event_handlers import OnProcessStart
+from launch.event_handlers import OnExecutionComplete, OnProcessStart
 from launch.actions import ExecuteProcess, LogInfo, RegisterEventHandler
 from launch.substitutions import FindExecutable, LaunchConfiguration
 
@@ -81,12 +81,34 @@ def generate_launch_description():
                     controller_params_file]
     )
     
-    delayed_controller_manager = TimerAction(period=5.0, actions=[controller_manager])
+    delayed_controller_manager = RegisterEventHandler(
+        event_handler=OnExecutionComplete(
+            target_action=button_on,
+            on_completion=[
+                TimerAction(
+                    period=2.0, 
+                    actions=[controller_manager]
+                )],
+        )
+    )
 
-    delayed_power_on = TimerAction(period=1.0, actions=[power_on])
+    delayed_power_on = RegisterEventHandler(
+        event_handler=OnExecutionComplete(
+            target_action=power_service,
+            on_completion=[power_on],
+        )
+    )
 
-    delayed_button_on = TimerAction(period=2.0, actions=[button_on])
-    
+    delayed_button_on = RegisterEventHandler(
+        event_handler=OnExecutionComplete(
+            target_action=power_on,
+            on_completion=[
+                TimerAction(
+                    period=1.0, 
+                    actions=[button_on]
+                )],
+        )
+    )
 
 
     diff_drive_spawner = Node(
