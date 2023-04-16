@@ -83,6 +83,12 @@ def generate_launch_description():
     
     delayed_controller_manager = TimerAction(period=3.0, actions=[controller_manager])
 
+    delayed_power_on = TimerAction(period=3.0, actions=[power_on])
+
+    delayed_button_on = TimerAction(period=6.0, actions=[button_on])
+    
+
+
     diff_drive_spawner = Node(
         package="controller_manager",
         executable="spawner",
@@ -113,9 +119,10 @@ def generate_launch_description():
     return LaunchDescription([
         power_service,
         rsp,
-        power_on,
+        delayed_power_on,
+        delayed_button_on,
         controller_manager,
         delayed_diff_drive_spawner,
-        delayed_joint_broad_spawner,
-        button_on
+        delayed_joint_broad_spawner
+    
     ])
