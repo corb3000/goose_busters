@@ -54,7 +54,7 @@ def generate_launch_description():
                 " service call ",
                 "/motor_power ",
                 "robot_interfaces/srv/MotorPower ",
-                '"{'on': 1}"',
+                '"{pon: 1}"',
         ]
         ],
         shell=True,
