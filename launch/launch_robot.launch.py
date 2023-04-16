@@ -85,7 +85,7 @@ def generate_launch_description():
 
     delayed_power_on = TimerAction(period=1.0, actions=[power_on])
 
-    delayed_button_on = TimerAction(period=3.0, actions=[button_on])
+    delayed_button_on = TimerAction(period=2.0, actions=[button_on])
     
 
 
