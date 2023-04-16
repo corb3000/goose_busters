@@ -93,9 +93,9 @@ def generate_launch_description():
     )
 
     delayed_power_on = RegisterEventHandler(
-        event_handler=OnExecutionComplete(
+        event_handler=OnProcessStart(
             target_action=power_service,
-            on_completion=[power_on],
+            on_start=[power_on],
         )
     )
 
