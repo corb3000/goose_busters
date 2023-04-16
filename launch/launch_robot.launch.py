@@ -49,13 +49,28 @@ def generate_launch_description():
     )
 
     power_on = ExecuteProcess(
-        cmd=[[
-            FindExecutable(name="ros2"),
-            " service call ",
-            "/motor_power robot_interfaces/srv/MotorPower ",
-            '"{'on': 1}"'
-        ]],
-        shell=True
+        cmd=[
+        [
+                FindExecutable(name="ros2"),
+                " service call ",
+                "/motor_power",
+                "robot_interfaces/srv/MotorPower ",
+                '"{on: 1}"'
+        ]
+        ],
+        shell=True,
+    )
+
+    button_on = ExecuteProcess(
+        cmd=[
+        [
+                FindExecutable(name="ros2"),
+                " service call ",
+                "/motor_button",
+                "robot_interfaces/srv/MotorButtonOn ",
+        ]
+        ],
+        shell=True,
     )
 
     controller_params_file = os.path.join(get_package_share_directory(package_name),'config','my_controllers.yaml')
@@ -97,6 +112,7 @@ def generate_launch_description():
 
     # Launch them all!
     return LaunchDescription([
+        power_service,
         rsp,
         controller_manager,
         delayed_diff_drive_spawner,
