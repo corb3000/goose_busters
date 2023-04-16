@@ -81,11 +81,11 @@ def generate_launch_description():
                     controller_params_file]
     )
     
-    delayed_controller_manager = TimerAction(period=3.0, actions=[controller_manager])
+    delayed_controller_manager = TimerAction(period=5.0, actions=[controller_manager])
 
-    delayed_power_on = TimerAction(period=3.0, actions=[power_on])
+    delayed_power_on = TimerAction(period=1.0, actions=[power_on])
 
-    delayed_button_on = TimerAction(period=6.0, actions=[button_on])
+    delayed_button_on = TimerAction(period=3.0, actions=[button_on])
     
 
 
@@ -121,7 +121,7 @@ def generate_launch_description():
         rsp,
         delayed_power_on,
         delayed_button_on,
-        controller_manager,
+        delayed_controller_manager,
         delayed_diff_drive_spawner,
         delayed_joint_broad_spawner
     
