@@ -9,7 +9,6 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import Command, FindExecutable, PathJoinSubstitution
 from launch.actions import RegisterEventHandler
 from launch.event_handlers import OnProcessStart
-from launch.event_handlers import OnProcessFinish
 from launch.actions import ExecuteProcess, LogInfo, RegisterEventHandler
 from launch.substitutions import FindExecutable, LaunchConfiguration
 
@@ -113,6 +112,7 @@ def generate_launch_description():
     # Launch them all!
     return LaunchDescription([
         power_service,
+
         rsp,
         controller_manager,
         delayed_diff_drive_spawner,
