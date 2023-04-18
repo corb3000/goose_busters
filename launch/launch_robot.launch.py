@@ -30,6 +30,12 @@ def generate_launch_description():
                     get_package_share_directory(package_name),'launch','rsp.launch.py'
                 )]), launch_arguments={'use_sim_time': 'false', 'use_ros2_control': 'true'}.items()
     )
+
+    joy = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory(package_name),'launch','launch_joy.py'
+                )])
+    )
     
     robot_description = Command(
         [
@@ -141,6 +147,7 @@ def generate_launch_description():
     return LaunchDescription([
         power_service,
         rsp,
+        joy,
         delayed_power_on,
         delayed_button_on,
         delayed_controller_manager,
