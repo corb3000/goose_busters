@@ -44,10 +44,10 @@ diff_cont:
     linear.x.has_velocity_limits: true
     linear.x.has_acceleration_limits: true
     linear.x.has_jerk_limits: true
-    linear.x.max_velocity: 1.0  # m/s
+    linear.x.max_velocity: 3.0  # m/s
     # linear.x.min_velocity: NAN
-    linear.x.max_acceleration: 0.8  # m/s^2
-    # linear.x.min_acceleration: NAN
+    linear.x.max_acceleration: 1  # m/s^2
+    linear.x.min_acceleration: -2  # m/s^2
     linear.x.max_jerk: 5.0  # m/s^3
     # linear.x.min_jerk: NAN
 
